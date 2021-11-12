@@ -82,7 +82,7 @@ class StarDelete(LoginRequiredMixin, DeleteView):
     model = Star
     success_url = '/stars/'
 
-
+@login_required
 def add_planet(request, star_id, planet_id):
     planet = Planet.objects.get(id=planet_id)
     planet.star_id = star_id
@@ -136,7 +136,7 @@ class PlanetDelete(LoginRequiredMixin, DeleteView):
     model = Planet
     success_url = '/planets/'
 
-
+@login_required
 def add_satellite(request, planet_id, satellite_id):
     satellite = Satellite.objects.get(id=satellite_id)
     satellite.planet_id = planet_id
@@ -220,37 +220,37 @@ class MissionDelete(LoginRequiredMixin, DeleteView):
 
     success_url = '/missions/'
 
-
+@login_required
 def assoc_star(request, star_id, mission_id):
     Star.objects.get(id=star_id).star.add(mission_id)
     return redirect('detail', star_id=star_id)
 
-
+@login_required
 def dissoc_star(request, star_id, mission_id):
     Star.objects.get(id=star_id).star.remove(mission_id)
     return redirect('detail', star_id=star_id)
 
-
+@login_required
 def assoc_planet(request, planet_id, mission_id):
     Planet.objects.get(id=planet_id).planet.add(mission_id)
     return redirect('planets_detail', planet_id=planet_id)
 
-
+@login_required
 def dissoc_planet(request, planet_id, mission_id):
     Planet.objects.get(id=planet_id).planet.add(mission_id)
     return redirect('planets_detail', planet_id=planet_id)
 
-
+@login_required
 def assoc_satellite(request, satellite_id, mission_id):
     Satellite.objects.get(id=satellite_id).satellite.add(mission_id)
     return redirect('satellites_detail', satellite_id=satellite_id)
 
-
+@login_required
 def dissoc_satellite(request, satellite_id, mission_id):
     Satellite.objects.get(id=satellite_id).satellite.add(mission_id)
     return redirect('satellites_detail', satellite_id=satellite_id)
 
-
+@login_required
 def add_star_photo(request, star_id):
     # the form's input will have a name of photo-file
     photo_file = request.FILES.get('photo-file', None)
@@ -268,7 +268,7 @@ def add_star_photo(request, star_id):
             print('An error occured uploading file to S3', e)
     return redirect('detail', star_id=star_id)
 
-
+@login_required
 def add_planet_photo(request, planet_id):
     # the form's input will have a name of photo-file
     photo_file = request.FILES.get('photo-file', None)
@@ -286,7 +286,7 @@ def add_planet_photo(request, planet_id):
             print('An error occured uploading file to S3', e)
     return redirect('planets_detail', planet_id=planet_id)
 
-
+@login_required
 def add_satellite_photo(request, satellite_id):
     # the form's input will have a name of photo-file
     photo_file = request.FILES.get('photo-file', None)
