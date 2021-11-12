@@ -8,7 +8,7 @@ Created by Team AstroNuts—all of whom are avowed fans of space exploration—t
 
 **Technologies Used**
 
-*Languages:* HTML, CSS, Javascript, Python<br>
+*Languages:* HTML, CSS/Materialize, Python<br>
 *Framework:* Django<br>
 *Platforms:* Heroku (app hosting), Amazon Web Services (models images hosting), Imgur (screenshots/favicon/app image hosting)<br>
 *Resources:* Pixabay, Pexels (background image sourcing), W.K. Broxton (clutch video-editing skills)<br>
